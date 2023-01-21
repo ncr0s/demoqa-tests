@@ -46,11 +46,6 @@ public class TextBoxTests {
         $("#output #permanentAddress").shouldHave(text(permanentAddress));
     }
 
-    /*
-    Разработайте один автотест на проверку формы https://demoqa.com/automation-practice-form
-
-    Запушьте код в свой репозиторий и дайте на него ссылку в качестве ответа на домашнее задание
-    */
     @Test
     public void fillInAutomationPracticeForm() {
         open("/automation-practice-form");
