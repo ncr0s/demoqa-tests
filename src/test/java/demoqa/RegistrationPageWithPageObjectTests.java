@@ -1,20 +1,22 @@
 package demoqa;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 
 public class RegistrationPageWithPageObjectTests extends TestBase {
 
     @Test
     public void fillInRegistrationForm() {
-        String userName = "Melany Dempsey";
-        String email = "zinnia_rickeysak@sizes.bxa";
+        Faker faker = new Faker();
+        String userName = String.format("%s %s", faker.name().firstName(), faker.name().lastName());
+        String email = faker.internet().emailAddress();
         String gender = "Female";
-        String phone = "0912019847";
+        String phone = "0893709419";
         String dob = "13 April 1997";
         String[] dobParts = dob.split(" ");
         String subject = "physics";
         String hobby = "Reading";
-        String currentAddress = "Nato Road 5890, West Prairie, Runion, 590677";
+        String currentAddress = faker.address().fullAddress();
         String state = "NCR";
         String city = "Gurgaon";
 
