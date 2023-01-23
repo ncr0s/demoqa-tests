@@ -35,12 +35,13 @@ public class RegistrationPageWithPageObjectTests extends TestBase {
         registrationPage
             .verifyResult("Student Name", userName)
             .verifyResult("Student Email", email)
-            .verifyResult("Gender", gender).verifyResult("Mobile", phone)
+            .verifyResult("Gender", gender)
+            .verifyResult("Mobile", phone)
             .verifyResult("Date of Birth", String.format("%s %s,%s",dobParts[0], dobParts[1], dobParts[2]))
             .verifyResult("Subjects", subject)
             .verifyResult("Hobbies", hobby)
             .verifyResult("Picture", "pic.jpg")
-            .verifyResult("Address", currentAddress).
-            verifyResult("State and City", String.format("%s %s", state, city));
+            .verifyResult("Address", currentAddress)
+            .verifyResult("State and City", String.format("%s %s", state, city));
     }
 }
