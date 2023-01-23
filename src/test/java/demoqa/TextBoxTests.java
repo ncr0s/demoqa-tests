@@ -14,14 +14,6 @@ public class TextBoxTests {
     private final String currentAddress = "Nato Road 5890, West Prairie, Runion, 590677";
     private final String permanentAddress = "Clean St 3411, Boynton Beach, Kenya, 969352";
 
-    private final String gender = "Female";
-    private final String phone = "0912019847";
-    private final String dob = "13 April 1997";
-    private final String subject = "physics";
-    private final String hobby = "Reading";
-    private final String state = "NCR";
-    private final String city = "Gurgaon";
-
     @BeforeAll
     public static void setUp() {
         Configuration.browserSize = "1920x1080";
