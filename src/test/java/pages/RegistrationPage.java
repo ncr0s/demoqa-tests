@@ -2,7 +2,9 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import data.Genders;
 import pages.components.RegistrationResultModal;
+import data.Subjects;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -44,8 +46,8 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setGender(String value) {
-        gender.$(byText(value)).click();
+    public RegistrationPage setGender(Genders value) {
+        gender.$(byText(value.toString())).click();
         return this;
     }
 
@@ -54,14 +56,14 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setBirthDate(String value) {
+    public RegistrationPage setBirthDate(String date, String month, String year) {
         dobInput.click();
-        calendarComponent.setDate(value);
+        calendarComponent.setDate(date, month, year);
         return this;
     }
 
-    public RegistrationPage setSubject(String value) {
-        subjectsInput.setValue(value).pressEnter();
+    public RegistrationPage setSubject(Subjects value) {
+        subjectsInput.setValue(value.toString()).pressEnter();
         return this;
     }
 

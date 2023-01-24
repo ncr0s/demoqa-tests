@@ -1,32 +1,40 @@
 package demoqa;
 
+import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
+import data.Genders;
+import data.Subjects;
+
+import static utils.RandomUtils.birthDayGenerator;
+import static utils.RandomUtils.cityGenerator;
 
 public class RegistrationPageWithPageObjectTests extends TestBase {
 
     @Test
     public void fillInRegistrationForm() {
-        String userName = "Melany Dempsey";
-        String email = "zinnia_rickeysak@sizes.bxa";
-        String gender = "Female";
-        String phone = "0912019847";
-        String dob = "13 April 1997";
-        String[] dobParts = dob.split(" ");
-        String subject = "physics";
-        String hobby = "Reading";
-        String currentAddress = "Nato Road 5890, West Prairie, Runion, 590677";
-        String state = "NCR";
-        String city = "Gurgaon";
+        Faker faker = new Faker();
+
+        String userName = String.format("%s %s", faker.name().firstName(), faker.name().lastName());
+        String email = faker.internet().emailAddress();
+        Genders gender = faker.options().option(Genders.values());
+        String phone = faker.phoneNumber().subscriberNumber(10);
+        String[] dob = birthDayGenerator(3, 96);
+        Subjects subject = faker.options().option(Subjects.values());
+        String hobby = faker.options().option("Sports", "Reading", "Music");
+        String fileName = faker.options().option("pic.jpg", "padme.jpg");
+        String currentAddress = faker.address().fullAddress();
+        String state = faker.options().option("NCR", "Uttar Pradesh", "Haryana", "Rajasthan");
+        String city = cityGenerator(state);
 
         registrationPage.openPage()
             .setFullName(userName)
             .setEmail(email)
             .setGender(gender)
             .setPhone(phone)
-            .setBirthDate(dob)
+            .setBirthDate(dob[0], dob[1], dob[2])
             .setSubject(subject)
             .setHobby(hobby)
-            .uploadFile("pic.jpg")
+            .uploadFile(fileName)
             .setAddress(currentAddress)
             .setStateAndCity(state, city)
             .submit();
@@ -35,12 +43,12 @@ public class RegistrationPageWithPageObjectTests extends TestBase {
         registrationPage
             .verifyResult("Student Name", userName)
             .verifyResult("Student Email", email)
-            .verifyResult("Gender", gender)
+            .verifyResult("Gender", gender.toString())
             .verifyResult("Mobile", phone)
-            .verifyResult("Date of Birth", String.format("%s %s,%s",dobParts[0], dobParts[1], dobParts[2]))
-            .verifyResult("Subjects", subject)
+            .verifyResult("Date of Birth", String.format("%s %s,%s", dob[0], dob[1], dob[2]))
+            .verifyResult("Subjects", subject.toString())
             .verifyResult("Hobbies", hobby)
-            .verifyResult("Picture", "pic.jpg")
+            .verifyResult("Picture", fileName)
             .verifyResult("Address", currentAddress)
             .verifyResult("State and City", String.format("%s %s", state, city));
     }
