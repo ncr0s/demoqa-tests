@@ -24,8 +24,9 @@ public class RegistrationPage {
         dobInput = $("#dateOfBirthInput"),
         subjectsInput = $("#subjectsInput"),
         hobbiesWrapper = $("#hobbiesWrapper"),
-        uploadButton =  $("#uploadPicture"),
+        uploadButton = $("#uploadPicture"),
         currentAddress = $("#currentAddress");
+
     public RegistrationPage openPage() {
         open("/automation-practice-form");
         $(".main-header").shouldHave(text(TITLE_TEXT));
@@ -73,14 +74,15 @@ public class RegistrationPage {
     }
 
     public RegistrationPage uploadFile(String fileName) {
-       uploadButton.uploadFromClasspath(fileName);
-       return this;
+        uploadButton.uploadFromClasspath(fileName);
+        return this;
     }
 
     public RegistrationPage setAddress(String value) {
         currentAddress.setValue(value);
         return this;
     }
+
     public RegistrationPage setStateAndCity(String state, String city) {
         $("#state").click();
         $(byText(state)).click();
@@ -94,13 +96,13 @@ public class RegistrationPage {
         return this;
     }
 
-   public RegistrationPage  verifyModalAppears() {
+    public RegistrationPage verifyModalAppears() {
         registrationResultModal.verifyModalAppears();
         return this;
-   }
+    }
 
-   public RegistrationPage verifyResult(String key, String value) {
+    public RegistrationPage verifyResult(String key, String value) {
         registrationResultModal.verifyResult(key, value);
         return this;
-   }
+    }
 }
