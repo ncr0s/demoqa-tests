@@ -22,3 +22,9 @@ tasks.withType(JavaCompile) {
 test {
     useJUnitPlatform()
 }
+
+task ui_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("UI")
+    }
+}

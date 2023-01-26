@@ -1,15 +1,15 @@
 package demoqa;
 
 import com.github.javafaker.Faker;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import data.Genders;
 import data.Subjects;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 
 import static utils.RandomUtils.birthDayGenerator;
 import static utils.RandomUtils.cityGenerator;
 
-public class RegistrationPageWithPageObjectTests extends TestBase {
+public class RegistrationPageRemoteDriverTests extends TestBaseExtended {
 
     @Tag("UI")
     @Test
