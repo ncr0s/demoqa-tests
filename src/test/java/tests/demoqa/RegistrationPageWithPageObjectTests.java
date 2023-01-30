@@ -1,6 +1,8 @@
 package tests.demoqa;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import data.Genders;
@@ -13,6 +15,12 @@ public class RegistrationPageWithPageObjectTests extends TestBase {
 
     @Test
     @Tag("UI")
+    @Owner("ncr0s")
+    @Feature("Demo QA")
+    @Story("Registration form")
+    @DisplayName("Positive: Fill in the registration form")
+    @Severity(SeverityLevel.CRITICAL)
+    @Link(value = "Lesson", url = "https://qa.guru/pl/teach/control/lesson/view?id=257901252")
     public void fillInRegistrationForm() {
         Faker faker = new Faker();
 
