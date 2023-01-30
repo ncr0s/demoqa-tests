@@ -1,6 +1,7 @@
-package demoqa;
+package tests.demoqa;
 
 import com.github.javafaker.Faker;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import data.Genders;
 import data.Subjects;
@@ -11,6 +12,7 @@ import static utils.RandomUtils.cityGenerator;
 public class RegistrationPageWithPageObjectTests extends TestBase {
 
     @Test
+    @Tag("UI")
     public void fillInRegistrationForm() {
         Faker faker = new Faker();
 

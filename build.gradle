@@ -1,5 +1,23 @@
 plugins {
     id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+def allureVersion = "2.20.1",
+    slf4jVersion = "2.0.6"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
 }
 
 repositories {
@@ -9,10 +27,14 @@ repositories {
 dependencies {
     testImplementation (
             "com.codeborne:selenide:6.11.0",
-            "org.junit.jupiter:junit-jupiter:5.9.1",
-            "com.github.javafaker:javafaker:1.0.2")
+            "org.junit.jupiter:junit-jupiter-api:5.9.2",
+            "com.github.javafaker:javafaker:1.0.2",
+            "io.qameta.allure:allure-selenide:$allureVersion"
+    )
     testRuntimeOnly(
-            "org.slf4j:slf4j-simple:2.0.6")
+            "org.slf4j:slf4j-simple:$slf4jVersion",
+            "org.junit.jupiter:junit-jupiter-engine:5.9.2"
+    )
 }
 
 tasks.withType(JavaCompile) {
@@ -21,4 +43,11 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+
+task remote_ui(type: Test) {
+    useJUnitPlatform {
+        includeTags("UI")
+    }
 }
