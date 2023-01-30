@@ -18,8 +18,8 @@ public class TestBase {
     @BeforeAll
     static void setUp() {
         Configuration.browserSize = "1920x1080";
-        Configuration.browser = "firefox";
-        Configuration.browserVersion = "97.0";
+        Configuration.browser = "chrome";
+        Configuration.browserVersion = "99.0";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
