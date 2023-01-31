@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 
 import java.security.SecureRandom;
 import java.text.SimpleDateFormat;
+import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomUtils {
@@ -33,7 +34,7 @@ public class RandomUtils {
     }
 
     public static String[] birthDayGenerator(int minAge, int maxAge) {
-        String formattedDate = new SimpleDateFormat("dd MMMM yyyy").format(faker.date().birthday(minAge, maxAge));
+        String formattedDate = new SimpleDateFormat("dd MMMM yyyy", Locale.ENGLISH).format(faker.date().birthday(minAge, maxAge));
         return formattedDate.split(" ");
     }
 
