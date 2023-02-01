@@ -3,6 +3,9 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
+System.setProperty('javax.net.ssl.trustStore', 'cacerts')
+System.setProperty('javax.net.ssl.trustStorePassword', 'changeit')
+
 def allureVersion = "2.20.1",
     slf4jVersion = "2.0.6"
 
@@ -49,5 +52,12 @@ test {
 task remote_ui(type: Test) {
     useJUnitPlatform {
         includeTags("UI")
+    }
+}
+
+
+task one_prop_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("one_property")
     }
 }
