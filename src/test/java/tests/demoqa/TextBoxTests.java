@@ -29,6 +29,8 @@ public class TextBoxTests extends TestBase {
 
         step("Open text boxes page", () -> {
             open("/text-box");
+            executeJavaScript("$('footer').remove()");
+            executeJavaScript("$('#fixedban').remove()");
         });
         step("Pages header should has text " + headerText, () -> {
             $(".main-header").shouldHave(text(headerText));
