@@ -21,7 +21,7 @@ public class TestBase {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion =  System.getProperty("browser_version", "99.0");
         Configuration.baseUrl = "https://demoqa.com";
-        Configuration.remote = System.getProperty("browser_address");
+        Configuration.remote = String.format("https://user1:1234@%s/wd/hub", System.getProperty("browser_address"));
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
