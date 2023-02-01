@@ -29,7 +29,27 @@ public class systemPropertiesTests {
     void simplePropertyNewTest() {
         String browser = System.getProperty("browser", "firefox");
         System.out.println(browser);
-        //gradle clean one_prop_test
-        //gradle clean one_prop_test -Dbrowser=safari
+        // gradle clean one_prop_test
+        // firefox
+
+        // gradle clean one_prop_test -Dbrowser=safari
+        // safari
+    }
+
+    @Test
+    @Tag("hello")
+    void simplePropertyHelloTest() {
+        System.out.println("Hello, " + System.getProperty("user_name", "anonymous"));
+
+        /*
+         gradle clean hello
+                Hello, anonymous
+
+         gradle clean hello -Duser_name=World
+                Hello, World
+         gradle clean hello -Duser_name="World of Warcraft"
+         gradle clean hello "-Duser_name=World of Warcraft"
+                Hello, World of Warcraft
+         */
     }
 }

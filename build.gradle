@@ -3,9 +3,6 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-System.setProperty('javax.net.ssl.trustStore', 'cacerts')
-System.setProperty('javax.net.ssl.trustStorePassword', 'changeit')
-
 def allureVersion = "2.20.1",
     slf4jVersion = "2.0.6"
 
@@ -27,6 +24,10 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation (
             "com.codeborne:selenide:6.11.0",
@@ -44,9 +45,16 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
+tasks.withType(Test) {
+    systemProperties(System.getProperties()) //transfer system properties from build command inside of code
     useJUnitPlatform()
-    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
 task remote_ui(type: Test) {
@@ -59,5 +67,17 @@ task remote_ui(type: Test) {
 task one_prop_test(type: Test) {
     useJUnitPlatform {
         includeTags("one_property")
+    }
+}
+
+task hello_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("hello")
+    }
+}
+
+task two_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("hello", "one_property")
     }
 }
