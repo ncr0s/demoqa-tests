@@ -24,9 +24,13 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
     testImplementation (
-            "com.codeborne:selenide:6.11.0",
+            "com.codeborne:selenide:6.8.1",
             "org.junit.jupiter:junit-jupiter-api:5.9.2",
             "com.github.javafaker:javafaker:1.0.2",
             "io.qameta.allure:allure-selenide:$allureVersion"
@@ -41,13 +45,39 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
+tasks.withType(Test) {
+    systemProperties(System.getProperties()) //transfer system properties from build command inside of code
     useJUnitPlatform()
-    systemProperties(System.getProperties())
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
 }
 
 task remote_ui(type: Test) {
     useJUnitPlatform {
         includeTags("UI")
+    }
+}
+
+
+task one_prop_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("one_property")
+    }
+}
+
+task hello_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("hello")
+    }
+}
+
+task two_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("hello", "one_property")
     }
 }

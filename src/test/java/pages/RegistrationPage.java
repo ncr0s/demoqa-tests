@@ -7,6 +7,8 @@ import data.Genders;
 import pages.components.RegistrationResultModal;
 import data.Subjects;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -84,7 +86,7 @@ public class RegistrationPage {
 
     @Step("Upload photo {fileName}")
     public RegistrationPage uploadFile(String fileName) {
-        uploadButton.uploadFromClasspath(fileName);
+        uploadButton.uploadFile(new File("src/test/resources/" + fileName));
         return this;
     }
 
