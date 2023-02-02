@@ -1,1 +1,17 @@
-
+{
+  "base": {
+    "logo": "",
+    "project": "${JOB_BASE_NAME}",
+    "environment": "qa.guru",
+    "comment": "hello there, @ncr0s",
+    "reportLink": "${BUILD_URL}",
+    "language": "en",
+    "allureFolder": "allure-report/",
+    "enableChart": true
+  },
+  "telegram": {
+    "token": "dddddddddddddddddddddddddddddddddds",
+    "chat": "-xxxx",
+    "replyTo": ""
+  }
+}
