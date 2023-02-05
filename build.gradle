@@ -30,14 +30,13 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     testImplementation (
-            "com.codeborne:selenide:6.8.1",
-            "org.junit.jupiter:junit-jupiter-api:5.9.2",
+            "com.codeborne:selenide:6.11.0",
+            "org.junit.jupiter:junit-jupiter:5.8.1",
             "com.github.javafaker:javafaker:1.0.2",
             "io.qameta.allure:allure-selenide:$allureVersion"
     )
     testRuntimeOnly(
-            "org.slf4j:slf4j-simple:$slf4jVersion",
-            "org.junit.jupiter:junit-jupiter-engine:5.9.2"
+            "org.slf4j:slf4j-simple:$slf4jVersion"
     )
 }
 
