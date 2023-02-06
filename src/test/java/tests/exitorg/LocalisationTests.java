@@ -5,8 +5,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.*;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -27,9 +26,23 @@ public class LocalisationTests extends TestBaseExit {
     }
 
     @Tag("UI")
-    @Owner("ncr0s")
-    @Feature("Demo QA")
-    @Story("Registration form")
+    @Feature("Exit main page")
+    @Story("Page localisation")
+    @DisplayName("Positive: Switch main page language test")
+    @Severity(SeverityLevel.BLOCKER)
+    @EnumSource(Locale.class)
+    @ParameterizedTest(name = "Should be possible to switch main page language for locale {0}")
+    void sloganShouldBeLocalised(Locale locale) {
+        mainPage
+            .openPage()
+            .switchLanguage(locale.name());
+
+        mainPage.mainPageSwitchLanguageCheck(locale);
+    }
+
+    @Tag("UI")
+    @Feature("Exit main page")
+    @Story("Page localisation")
     @DisplayName("Positive: Header menu localisation test")
     @Severity(SeverityLevel.CRITICAL)
     @MethodSource("exitLocaleDataProvider")
@@ -42,5 +55,20 @@ public class LocalisationTests extends TestBaseExit {
         for (String item : items) {
             mainPage.checkHeaderTextPresence(item);
         }
+    }
+
+    @Tag("UI")
+    @Feature("Exit main page")
+    @Story("Page localisation")
+    @DisplayName("Positive: The 'Buy tickets' button should be enabled with localised text")
+    @Severity(SeverityLevel.NORMAL)
+    @CsvFileSource(resources = "/csvSource/testData.csv")
+    @ParameterizedTest(name = "For locale {0} the button should has text {1}")
+    void buyTicketsButtonShouldBeLocalised(String locale, String text) {
+        mainPage
+            .openPage()
+            .switchLanguage(locale);
+
+        mainPage.checkBuyTicketsButtonWithText(text);
     }
 }
