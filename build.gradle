@@ -63,15 +63,15 @@ task remote_ui(type: Test) {
 }
 
 
-task one_prop_test(type: Test) {
+task demo_qa(type: Test) {
     useJUnitPlatform {
-        includeTags("one_property")
+        includeTags("demoQa")
     }
 }
 
-task hello_test(type: Test) {
+task exit_fest(type: Test) {
     useJUnitPlatform {
-        includeTags("hello")
+        includeTags("exitFest")
     }
 }
 

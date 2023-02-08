@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import data.Genders;
 import data.Subjects;
@@ -14,7 +15,7 @@ import static utils.RandomUtils.cityGenerator;
 public class RegistrationPageWithPageObjectTests extends TestBase {
 
     @Test
-    @Tag("UI")
+    @Tags({@Tag("UI"), @Tag("demoQa")})
     @Owner("ncr0s")
     @Feature("Demo QA")
     @Story("Registration form")

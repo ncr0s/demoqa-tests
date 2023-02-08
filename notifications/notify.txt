@@ -1,12 +1,12 @@
 Telegram bot: @qa_guru_17_ncr0s_bot
-Telegram token: dddddddddddddddddddd
-Chat id: -xxxx
+Telegram token: {botToken}
+Chat id: -{id}
 
 Fetch bot updates and look for the chat id:
-    curl https://api.telegram.org/bot6ddddddddddddddddddddddddddddddd/getUpdates | jq .message.chat.id
+    curl https://api.telegram.org/bot6{botToken}/getUpdates | jq .message.chat.id
 
 Send a message using the HTTP API: https://core.telegram.org/bots/api#sendmessage
-    curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "123456789", "text": "This is a test from curl", "disable_notification": true}' https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage
+    curl -X POST -H 'Content-Type: application/json' -d '{"chat_id": "-{id}", "text": "This is a test from curl", "disable_notification": true}' https://api.telegram.org/bot{botToken}/sendMessage
 
 Run jar with notifications
     java "-DconfigFile=notifications/config.json" -jar notifications/allure-notifications-4.2.1.jar
