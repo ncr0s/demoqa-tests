@@ -3,6 +3,7 @@ package tests.demoqa;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
@@ -18,7 +19,7 @@ public class TextBoxTests extends TestBase {
     private final String permanentAddress = "Clean St 3411, Boynton Beach, Kenya, 969352";
 
     @Test
-    @Tag("UI")
+    @Tags({@Tag("UI"), @Tag("demoQa")})
     @Owner("ncr0s")
     @Feature("Demo QA")
     @Story("Text Box")

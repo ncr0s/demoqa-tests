@@ -4,12 +4,14 @@ import data.Locale;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 
 import java.util.List;
 import java.util.stream.Stream;
 
+@Tags({@Tag("UI"), @Tag("exitFest")})
 public class LocalisationTests extends TestBaseExit {
 
     static Stream<Arguments> exitLocaleDataProvider() {
@@ -25,7 +27,6 @@ public class LocalisationTests extends TestBaseExit {
         );
     }
 
-    @Tag("UI")
     @Feature("Exit main page")
     @Story("Page localisation")
     @DisplayName("Positive: Switch main page language test")
@@ -40,7 +41,6 @@ public class LocalisationTests extends TestBaseExit {
         mainPage.mainPageSwitchLanguageCheck(locale);
     }
 
-    @Tag("UI")
     @Feature("Exit main page")
     @Story("Page localisation")
     @DisplayName("Positive: Header menu localisation test")
@@ -57,7 +57,6 @@ public class LocalisationTests extends TestBaseExit {
         }
     }
 
-    @Tag("UI")
     @Feature("Exit main page")
     @Story("Page localisation")
     @DisplayName("Positive: The 'Buy tickets' button should be enabled with localised text")
