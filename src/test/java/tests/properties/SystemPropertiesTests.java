@@ -3,7 +3,7 @@ package tests.properties;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-public class systemPropertiesTests {
+public class SystemPropertiesTests {
     @Test
     void simplePropertyTest() {
         String browser = System.getProperty("browser");

@@ -22,14 +22,12 @@ public class ExitMainPage {
 
     @Step("Switch the page language to {language}")
     public ExitMainPage switchLanguage(String language) {
-        if($(".lang .wpml-ls-native").getText().equalsIgnoreCase(language)) {
-            return this;
-        } else {
+        if (!$(".lang .wpml-ls-native").getText().equalsIgnoreCase(language)) {
             $(".js-wpml-ls-item-toggle").click();
             $$(".wpml-ls-slot-shortcode_actions .wpml-ls-item")
                 .find(text(language)).click();
-            return this;
         }
+        return this;
     }
 
     @Step("Page header should has text {text}")

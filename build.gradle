@@ -30,6 +30,7 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     testImplementation (
+            "org.aeonbits.owner:owner:1.0.12",
             "com.codeborne:selenide:6.11.0",
             "org.junit.jupiter:junit-jupiter:5.8.1",
             "com.github.javafaker:javafaker:1.0.2",
@@ -61,7 +62,6 @@ task remote_ui(type: Test) {
         includeTags("UI")
     }
 }
-
 
 task demo_qa(type: Test) {
     useJUnitPlatform {
